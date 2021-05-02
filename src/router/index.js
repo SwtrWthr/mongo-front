@@ -1,8 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import ComponentLoading from '../components/ComponentLoading'
 
 Vue.use(VueRouter)
+
+const AdminRoot = () => ({
+  component: import(/* webpackChunkName: "admin-pages" */ '@/views/admin/root'),
+  loading: ComponentLoading,
+  delay: 2500
+})
+const AdminBookIndex = () => ({
+  component: import(/* webpackChunkName: "admin-pages" */ '@/views/admin/book/index'),
+  loading: ComponentLoading,
+  delay: 2500
+})
+const AdminDashboard = () => ({
+  component: import(/* webpackChunkName: "admin-pages" */ '@/views/admin/dashboard/index'),
+  loading: ComponentLoading,
+  delay: 2500
+})
 
 const routes = [
   {
@@ -11,12 +28,21 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/admin',
+    name: 'AdminRoot',
+    component: AdminRoot,
+    children: [
+      {
+        path: 'books',
+        name: 'AdminBookIndex',
+        component: AdminBookIndex
+      },
+      {
+        path: 'dashboard',
+        name: 'AdminDashboard',
+        component: AdminDashboard
+      }
+    ]
   }
 ]
 
