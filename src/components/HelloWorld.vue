@@ -18,20 +18,5 @@ export default {
       mdiFire
     }
   },
-
-  mounted () {
-    this.fetchBooks()
-  },
-
-  methods: {
-    async fetchBooks () {
-      await this.$axios.get('/books')
-        .then(res => {
-          if (res && res.data) {
-            console.log(res.data)
-          }
-        })
-    }
-  }
 }
 </script>

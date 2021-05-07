@@ -17,8 +17,8 @@
             v-if="item.image"
             :src="item.image"
             :lazy-src="LazyImage"
-            max-width="90"
-            height="140"
+            max-width="40"
+            height="70"
             class="mr-4 my-4"
           >
           </v-img>

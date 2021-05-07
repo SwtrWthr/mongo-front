@@ -1,15 +1,15 @@
 <template>
-  <hello-world />
+  <ItemCard/>
 </template>
 
 <script>
-import HelloWorld from '../components/HelloWorld'
+import ItemCard from '../components/home/ItemCard'
 
 export default {
   name: 'Home',
 
   components: {
-    HelloWorld
+    ItemCard
   }
 }
 </script>

@@ -20,7 +20,9 @@
           :to="{
             name: item.path
           }"
+          :ripple="false"
         >
+          <div class="nav-bar-item--active"></div>
           <v-list-item-icon class="mx-auto">
             <v-icon>
               {{ item.icon }}
@@ -59,6 +61,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+.v-list-item--active {
+  .nav-bar-item--active {
+    background-color: #1EA896;
+    width: 10px;
+    height: 35px;
+    border-radius: 10px;
+    position: absolute;
+    left: -25px;
+  }
 
+  &:before {
+    background-color: transparent !important;
+  }
+}
 </style>

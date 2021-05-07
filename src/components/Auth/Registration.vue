@@ -1,12 +1,12 @@
 <template>
-  <v-card>
-
-  </v-card>
+  <div>
+    HELLO
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'ItemCard'
+  name: 'RegistrationComponent'
 }
 </script>
 

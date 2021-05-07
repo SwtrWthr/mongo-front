@@ -12,7 +12,7 @@ export default {
   name: 'App',
   computed: {
     checkLayout() {
-      if(this.$route.meta.isEmpty) {
+      if(this.$route.meta.useEmptyLayout) {
         return LayoutEmpty
       } else {
         return LayoutApp
