@@ -3,6 +3,12 @@
     style="height: 100%"
     class="d-flex justify-center"
   >
+<!--    <v-img-->
+<!--      :src="Logo"-->
+<!--      width="35"-->
+<!--      height="35"-->
+<!--      style="position: absolute; top: 12px"-->
+<!--    />-->
     <v-list
       rounded
       class="my-auto"
@@ -36,11 +42,13 @@
 
 <script>
 import { mdiBookshelf, mdiHome, mdiChartLine } from '@mdi/js'
+// import Logo from '@/assets/logo_new.png'
 
 export default {
   name: 'SidePanel',
   data () {
     return {
+      // Logo,
       selectedItem: 0,
       items: [
         {

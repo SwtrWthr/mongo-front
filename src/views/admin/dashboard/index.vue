@@ -4,11 +4,15 @@
       v-if="loading"
       type="card"
     />
-    <book-chart
-      v-else
-      :series="quantities"
-      :categories="names"
-    />
+    <div v-else>
+      <p class="font-weight-bold" style="font-size: 24px">Book availability</p>
+      <div style="background-color: white; border-radius: 20px; width: 450px" class="pa-4">
+        <book-chart
+          :series="quantities"
+          :categories="names"
+        />
+      </div>
+    </div>
   </div>
 </template>
 

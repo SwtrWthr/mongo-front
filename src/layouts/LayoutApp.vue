@@ -17,6 +17,7 @@
       height="60"
       color="#EFF1F3"
       class="app-bar"
+      hide-on-scroll
     >
       <navigation-bar/>
     </v-app-bar>
