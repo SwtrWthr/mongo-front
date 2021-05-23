@@ -56,7 +56,7 @@ export default {
           icon: mdiHome
         },
         {
-          path: 'AdminBookIndex',
+          path: 'AdminIndex',
           icon: mdiBookshelf
         },
         {

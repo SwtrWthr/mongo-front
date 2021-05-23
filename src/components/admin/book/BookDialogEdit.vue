@@ -155,15 +155,26 @@
                 max-width="200"
                 class="mx-auto"
               ></v-img>
-              <v-btn
-                x-large
-                elevation="0"
-                outlined
-                class="error--text mt-4"
-                :ripple="false"
-              >
-                delete
-              </v-btn>
+            </v-col>
+            <v-col cols="12">
+              <div v-if="genres && genres.length > 0">
+                <p style="color: black; font-weight: 500; font-size: 18px" class="mb-1 ml-1">genres</p>
+                <v-chip-group
+                  multiple
+                  v-model="book.genres"
+                >
+                  <v-chip
+                    v-for="genre in genres"
+                    :key="genre._id"
+                    :ripple="false"
+                    :value="genre._id"
+                    outlined
+                    active-class="genres__chip--active"
+                  >
+                    {{ genre.title }}
+                  </v-chip>
+                </v-chip-group>
+              </div>
             </v-col>
           </v-row>
         </v-card-text>
@@ -207,6 +218,7 @@ export default {
   props: {
     dialog: Boolean,
     book_prop: Object,
+    genres: Array,
   },
   data () {
     return {
@@ -238,9 +250,13 @@ export default {
       fd.append('year', this.book.year)
       fd.append('quantity', this.book.quantity)
       fd.append('filename', this.book.filename)
-      if (this.new_image.length !== 0) {
+
+      if (this.new_image.length !== 0)
         fd.append('image', this.new_image)
-      }
+
+      if (this.book.genres.length > 0)
+        this.book.genres.forEach(genre => fd.append('genres[]', genre))
+
       await this.$axios.put('book/'+this.book._id, fd)
         .then(res => {
           if (res && res.data) {

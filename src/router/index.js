@@ -11,8 +11,8 @@ const AdminRoot = () => ({
   loading: ComponentLoading,
   delay: 2500
 })
-const AdminBookIndex = () => ({
-  component: import(/* webpackChunkName: "admin-pages" */ '@/views/admin/book/index'),
+const AdminIndex = () => ({
+  component: import(/* webpackChunkName: "admin-pages" */ '@/views/admin/index'),
   loading: ComponentLoading,
   delay: 2500
 })
@@ -43,8 +43,8 @@ const routes = [
     children: [
       {
         path: 'books',
-        name: 'AdminBookIndex',
-        component: AdminBookIndex
+        name: 'AdminIndex',
+        component: AdminIndex
       },
       {
         path: 'dashboard',

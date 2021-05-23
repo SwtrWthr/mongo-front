@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 // Full config:  https://github.com/axios/axios#request-config
-axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'http://localhost:4200/api/'
+axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || 'http://192.168.1.8:4200/api/'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
 axios.defaults.headers.common.Accept = 'application/json'
 
@@ -12,7 +12,8 @@ if (token) {
 }
 
 const config = {
-  baseURL: process.env.baseURL || process.env.apiUrl || 'http://localhost:4040/api/'
+
+  baseURL: process.env.baseURL || process.env.apiUrl || 'http://192.168.1.8:4040/api/'
   // timeout: 60 * 1000, // Timeout
   // withCredentials: true, // Check cross-site Access-Control
 }
@@ -61,4 +62,4 @@ Plugin.install = function (Vue, options) {
 
 Vue.use(Plugin)
 
-export default Plugin
+export default _axios

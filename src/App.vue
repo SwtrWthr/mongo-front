@@ -18,6 +18,9 @@ export default {
         return LayoutApp
       }
     }
+  },
+  mounted () {
+    this.$store.dispatch('initialize')
   }
 }
 </script>

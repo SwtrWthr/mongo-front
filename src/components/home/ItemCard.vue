@@ -5,9 +5,8 @@
     <v-img
       :lazy-src="LazyImage"
       :src="image"
-      max-height="250"
-      width="140"
-      contain
+      height="250"
+      width="160"
       class="mx-auto"
     />
     <div class="align-self-end">
@@ -65,11 +64,11 @@ export default {
   transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
   border-radius: 20px;
   background-color: white;
-  min-width: 230px;
+  flex: 0 1 23%;
 
   &:hover {
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
-    transform: translateY(-5px) translateX(-5px);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    transform: translateY(-5px);
   }
 }
 </style>

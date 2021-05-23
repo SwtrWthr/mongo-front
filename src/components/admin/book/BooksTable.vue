@@ -62,6 +62,7 @@
       v-if="selected_item"
       :dialog.sync="edit_dialog"
       :book_prop="selected_item"
+      :genres="genres"
       @updated="() => {
         this.edit_dialog = false
         this.$emit('refresh')
@@ -82,6 +83,7 @@ export default {
   props: {
     books: Array,
     loading: Boolean,
+    genres: Array,
   },
   data () {
     return {

@@ -143,6 +143,26 @@
                 </v-file-input>
               </div>
             </v-col>
+            <v-col cols="12">
+              <div v-if="genres && genres.length > 0">
+                <p style="color: black; font-weight: 500; font-size: 18px" class="mb-1 ml-1">genres</p>
+                <v-chip-group
+                  multiple
+                  v-model="selected_genres"
+                >
+                  <v-chip
+                    v-for="genre in genres"
+                    :key="genre._id"
+                    :ripple="false"
+                    :value="genre._id"
+                    outlined
+                    active-class="genres__chip--active"
+                  >
+                    {{ genre.title }}
+                  </v-chip>
+                </v-chip-group>
+              </div>
+            </v-col>
           </v-row>
         </v-card-text>
         <v-card-actions
@@ -183,6 +203,7 @@ export default {
   name: 'BookDialogAdd',
   props: {
     dialog: Boolean,
+    genres: Array
   },
   data () {
     return {
@@ -196,7 +217,8 @@ export default {
         year: '',
         quantity: '',
         image: []
-      }
+      },
+      selected_genres: []
     }
   },
   methods: {
@@ -210,6 +232,8 @@ export default {
       fd.append('year', this.book.year)
       fd.append('quantity', this.book.quantity)
       fd.append('image', this.book.image)
+      if (this.selected_genres.length > 0)
+        this.selected_genres.forEach(genre => fd.append('genres[]', genre))
       await this.$axios.post('books', fd)
         .then(res => {
           if (res && res.data) {
@@ -242,5 +266,8 @@ export default {
   }
 }
 
-
+.genres__chip--active {
+  color: white !important;
+  background: linear-gradient(332deg, rgba(30, 168, 150, 1) 0%, rgba(116, 152, 170, 1) 72%, rgba(52, 138, 167, 1) 95%) !important;
+}
 </style>
