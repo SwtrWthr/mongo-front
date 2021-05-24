@@ -10,6 +10,21 @@
         placeholder="search..">
     </div>
     <div class="mr-6">
+      <v-badge
+        v-if="user"
+        :content="user.favourite_books && user.favourite_books.length"
+        :value="user.favourite_books && user.favourite_books.length"
+        color="primary"
+        overlap
+        class="mr-6"
+      >
+        <v-icon
+          color="black"
+          size="28"
+        >
+          {{ mdiHeart }}
+        </v-icon>
+      </v-badge>
       <span
         v-if="user"
         class="logout__span"
@@ -39,7 +54,7 @@
 
 <script>
 import SearchIcon from '@/assets/svg/search.svg'
-import { mdiLocationExit } from '@mdi/js'
+import { mdiLocationExit, mdiHeart } from '@mdi/js'
 import { mapState } from 'vuex'
 
 export default {
@@ -49,7 +64,8 @@ export default {
   },
   data() {
     return {
-      mdiLocationExit
+      mdiLocationExit,
+      mdiHeart,
     }
   },
   computed: {

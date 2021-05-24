@@ -27,6 +27,7 @@
             name: item.path
           }"
           :ripple="false"
+          :class="{ 'd-none': !isAdmin && item.path !== 'Home' }"
         >
           <div class="nav-bar-item--active"></div>
           <v-list-item-icon class="mx-auto">
@@ -42,6 +43,7 @@
 
 <script>
 import { mdiBookshelf, mdiHome, mdiChartLine } from '@mdi/js'
+import { mapGetters } from 'vuex'
 // import Logo from '@/assets/logo_new.png'
 
 export default {
@@ -65,6 +67,9 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapGetters('session', ['isAdmin'])
   }
 }
 </script>

@@ -16,6 +16,7 @@ const actions = {
     commit('setToken', '');
     commit('setUser', undefined)
     localStorage.removeItem('token');
+    window.location.reload();
   },
 
   async getUser({ commit }) {
@@ -28,10 +29,23 @@ const actions = {
       .catch((err) => {
         throw err
       })
-      // .finally(() => {
-      //   commit('setLoading', false);
-      // });
+    // .finally(() => {
+    //   commit('setLoading', false);
+    // });
   },
+
+  async addToFavourite({ commit }, book_id) {
+    await axios.get(`books/${book_id}/favourite/${state.user._id}`)
+      .then(res => {
+        if (res && res.data) {
+          // console.log(res.data)
+          commit('setUser', res.data)
+        }
+      })
+      .catch((err) => {
+        throw err
+      })
+  }
 };
 
 const mutations = {
@@ -41,12 +55,12 @@ const mutations = {
 
   setUser(state, value) {
     state.user = value;
-  }
+  },
 };
 
 const getters = {
   user: (state) => state.user,
-  isAdmin: (state) => (state.user ? state.user.admin : -1)
+  isAdmin: (state) => (state.user ? state.user.admin : false)
 }
 
 

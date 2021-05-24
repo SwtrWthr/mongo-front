@@ -28,19 +28,29 @@
       />
     </div>
     <div
-      v-else
+      v-else-if="books && books.length > 0"
       class="d-flex flex-wrap align-center"
       style="gap: 30px;"
     >
       <ItemCard
         v-for="book in books"
-        :key="book.id"
+        :key="book._id"
+        :id="book._id"
         :title="book.title"
         :author="book.author"
         :image="book.image"
         :price="book.price"
         :year="book.year"
+        :genres="book.genres"
+        :includes="user && user.favourite_books.includes(book._id)"
       />
+    </div>
+    <div
+      v-else
+      class="text-center"
+      style="font-size: 28px; font-weight: 600"
+    >
+      <p>Ooops! No books found...</p>
     </div>
   </div>
 </template>
@@ -49,6 +59,7 @@
 import ItemCard from '@/components/home/ItemCard'
 import FilterIcon from '@/assets/svg/filter.svg'
 import FilterCard from '@/components/home/FilterCard'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -69,6 +80,9 @@ export default {
   mounted () {
     this.fetchBooks()
     this.fetchGenres()
+  },
+  computed: {
+    ...mapState('session', ['user'])
   },
   methods: {
     async fetchBooks() {
@@ -105,7 +119,7 @@ export default {
       }).finally(() => {
         this.loading = false
       })
-    }
+    },
   }
 }
 </script>
