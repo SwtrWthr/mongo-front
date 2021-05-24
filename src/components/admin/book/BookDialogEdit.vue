@@ -234,6 +234,9 @@ export default {
       handler(newValue, oldValue) {
         if(newValue !== oldValue && newValue) {
           this.book = { ...this.book_prop }
+          this.book.genres = this.book.genres.map(genre => {
+            return genre._id
+          })
         }
       },
       immediate: true
